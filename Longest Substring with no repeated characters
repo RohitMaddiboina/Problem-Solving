@@ -1,0 +1,26 @@
+import string as stl
+class Solution(object):
+    
+    def lengthOfLongestSubstring(self, string):
+        dic={}
+        for i in range(0,255):
+            dic[chr(i)]=0
+        i=0
+        j=0
+        ans=1
+        if (len(string)==0):
+            return 0
+        elif string==' ':
+            return 1
+        dic[string[i]]+=1
+        while(j!=len(string)-1):
+            if(dic[string[j+1]]==0):
+                j+=1
+                dic[string[j]]+=1
+                ans=max(ans,j-i+1)
+            else:
+                dic[string[i]]-=1
+                i+=1
+        return ans
+ 
+        
